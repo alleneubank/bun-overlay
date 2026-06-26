@@ -28,7 +28,7 @@ Follow these steps to resolve it:
 4. **Test the fix** - Test that the fix works by building for the affected platform:
    ```bash
    # For example, to test on aarch64-linux:
-   ssh nixos@your-aarch64-machine 'nix develop github:0xbigboss/bun-overlay -c bun --version'
+   ssh nixos@your-aarch64-machine 'nix develop github:alleneubank/bun-overlay -c bun --version'
    ```
 
 ## Updating to a New Bun Version

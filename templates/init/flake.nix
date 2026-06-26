@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     flake-utils.url = "github:numtide/flake-utils";
-    bun-overlay.url = "github:0xbigboss/bun-overlay"; # Replace with your actual repo
+    bun-overlay.url = "github:alleneubank/bun-overlay"; # Replace with your actual repo
 
     # Used for shell.nix
     flake-compat = {
