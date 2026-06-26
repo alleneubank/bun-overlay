@@ -22,7 +22,7 @@ In your `flake.nix` file:
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
-    bun-overlay.url = "github:0xbigboss/bun-overlay";
+    bun-overlay.url = "github:alleneubank/bun-overlay";
   };
 
   outputs = { self, nixpkgs, bun-overlay, ... }:
@@ -47,16 +47,16 @@ In your `flake.nix` file:
 
 ```sh
 # Install and run bun (latest version)
-$ nix run github:0xbigboss/bun-overlay#bun
+$ nix run github:alleneubank/bun-overlay#bun
 
 # Open a shell with Bun available
-$ nix develop github:0xbigboss/bun-overlay
+$ nix develop github:alleneubank/bun-overlay
 
 # Build Bun
-$ nix build github:0xbigboss/bun-overlay#bun
+$ nix build github:alleneubank/bun-overlay#bun
 
 # Use Bun within your shell
-$ nix shell github:0xbigboss/bun-overlay#bun
+$ nix shell github:alleneubank/bun-overlay#bun
 ```
 
 ### Non-Flake Usage (Legacy Nix)
@@ -65,7 +65,7 @@ If you're not using flakes, you can still use this package through the `default.
 
 ```nix
 let
-  bunOverlay = import (fetchTarball "https://github.com/0xbigboss/bun-overlay/archive/main.tar.gz");
+  bunOverlay = import (fetchTarball "https://github.com/alleneubank/bun-overlay/archive/main.tar.gz");
   pkgs = import <nixpkgs> { overlays = [ bunOverlay ]; };
 in pkgs.mkShell {
   buildInputs = [ pkgs.bun ];
@@ -98,7 +98,7 @@ A basic Bun project template for JavaScript/TypeScript development:
 # Create a new project using the Bun template
 $ mkdir my-bun-project
 $ cd my-bun-project
-$ nix flake init -t github:0xbigboss/bun-overlay#init
+$ nix flake init -t github:alleneubank/bun-overlay#init
 ```
 
 The template includes:
