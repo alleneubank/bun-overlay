@@ -14,8 +14,37 @@ jobs:
       - run: ./update
         env:
           GH_TOKEN: ${{ github.token }}
-      - run: "git config user.email 0xbigboss@users.noreply.github.com"
-      - run: "git config user.name bun-overlay"
-      - run: "git add -A"
-      - run: "git commit -m 'update sources.json' | true"
-      - run: "git push -u origin main"
+
+      - id: changed
+        name: Detect whether sources.json moved
+        run: |
+          if git diff --quiet -- sources.json; then
+            echo "changed=false" >>"$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >>"$GITHUB_OUTPUT"
+            git --no-pager diff --stat -- sources.json
+          fi
+
+      # Pushes made with GITHUB_TOKEN do not trigger test.yml, so these two
+      # steps are the only verification a version bump ever gets. Run them
+      # before the commit so a broken release fails the job instead of
+      # landing on main.
+      - name: Check flake against updated sources
+        if: steps.changed.outputs.changed == 'true'
+        run: nix flake check
+
+      - name: Test native module support (Linux)
+        if: steps.changed.outputs.changed == 'true'
+        run: |
+          cd tests/native-modules
+          nix run ../..#bun -- install
+          nix run ../..#bun -- run test.ts
+
+      - name: Commit and push
+        if: steps.changed.outputs.changed == 'true'
+        run: |
+          git config user.email 0xbigboss@users.noreply.github.com
+          git config user.name bun-overlay
+          git add sources.json
+          git commit -m 'update sources.json'
+          git push -u origin main
