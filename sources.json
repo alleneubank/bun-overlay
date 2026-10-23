@@ -2,7 +2,7 @@
   "latest": {
     "version": "1.4.4",
     "tag": "bun-v1.4.4",
-    "shasums_hash": "1n9fmr3y178xwfl6f7nv4m8bk4mqyk16j82ms9pc6nkg2wkr7xv5",
+    "shasums_hash": "168yqs8myqh549zq9rhxpvzj6hy34qmp90srjyhin9yiw62p8977",
     "platforms": {
       "aarch64-darwin": {
         "url": "https://github.com/oven-sh/bun/releases/download/bun-v1.4.4/bun-darwin-aarch64.zip",
@@ -920,7 +920,7 @@
   "1.4.4": {
     "version": "1.4.4",
     "tag": "bun-v1.4.4",
-    "shasums_hash": "1n9fmr3y178xwfl6f7nv4m8bk4mqyk16j82ms9pc6nkg2wkr7xv5",
+    "shasums_hash": "168yqs8myqh549zq9rhxpvzj6hy34qmp90srjyhin9yiw62p8977",
     "platforms": {
       "aarch64-darwin": {
         "url": "https://github.com/oven-sh/bun/releases/download/bun-v1.4.4/bun-darwin-aarch64.zip",
